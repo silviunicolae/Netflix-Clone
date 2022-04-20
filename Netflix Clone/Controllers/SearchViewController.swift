@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ComingSoonViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
