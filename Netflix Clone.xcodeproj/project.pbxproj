@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B14CB0542810580300CAAC51 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB0532810580300CAAC51 /* HomeViewController.swift */; };
+		B14CB0562810584500CAAC51 /* ComingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */; };
+		B14CB058281058A900CAAC51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB057281058A900CAAC51 /* SearchViewController.swift */; };
+		B14CB05A281058D400CAAC51 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB059281058D400CAAC51 /* DownloadsViewController.swift */; };
 		B1DC46CD28103ACC00EA3EC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC46CC28103ACC00EA3EC3 /* AppDelegate.swift */; };
 		B1DC46CF28103ACC00EA3EC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC46CE28103ACC00EA3EC3 /* SceneDelegate.swift */; };
 		B1DC46D128103ACC00EA3EC3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DC46D028103ACC00EA3EC3 /* TabBarViewController.swift */; };
@@ -15,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B14CB0532810580300CAAC51 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewController.swift; sourceTree = "<group>"; };
+		B14CB057281058A900CAAC51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B14CB059281058D400CAAC51 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		B1DC46C928103ACC00EA3EC3 /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DC46CC28103ACC00EA3EC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1DC46CE28103ACC00EA3EC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +43,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B14CB052281057CB00CAAC51 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B14CB0532810580300CAAC51 /* HomeViewController.swift */,
+				B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */,
+				B14CB057281058A900CAAC51 /* SearchViewController.swift */,
+				B14CB059281058D400CAAC51 /* DownloadsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		B1DC46C028103ACC00EA3EC3 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +73,7 @@
 		B1DC46CB28103ACC00EA3EC3 /* Netflix Clone */ = {
 			isa = PBXGroup;
 			children = (
+				B14CB052281057CB00CAAC51 /* Controllers */,
 				B1DC46CC28103ACC00EA3EC3 /* AppDelegate.swift */,
 				B1DC46CE28103ACC00EA3EC3 /* SceneDelegate.swift */,
 				B1DC46D028103ACC00EA3EC3 /* TabBarViewController.swift */,
@@ -134,9 +154,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14CB058281058A900CAAC51 /* SearchViewController.swift in Sources */,
 				B1DC46D128103ACC00EA3EC3 /* TabBarViewController.swift in Sources */,
+				B14CB05A281058D400CAAC51 /* DownloadsViewController.swift in Sources */,
 				B1DC46CD28103ACC00EA3EC3 /* AppDelegate.swift in Sources */,
 				B1DC46CF28103ACC00EA3EC3 /* SceneDelegate.swift in Sources */,
+				B14CB0562810584500CAAC51 /* ComingSoonViewController.swift in Sources */,
+				B14CB0542810580300CAAC51 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
