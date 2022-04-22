@@ -18,13 +18,13 @@ class SearchViewController: UIViewController {
     }()
     
     private let searchController: UISearchController = {
-       let controller = UISearchController(searchResultsController: SearchResultsViewController())
+        let controller = UISearchController(searchResultsController: SearchResultsViewController())
         controller.searchBar.placeholder = "Search for a Movie or a TV Show"
         controller.searchBar.searchBarStyle = .minimal
         return controller
         
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,7 +65,7 @@ class SearchViewController: UIViewController {
         super.viewDidLayoutSubviews()
         discoverTable.frame = view.bounds
     }
-
+    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,9 +88,31 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let movie = movies[indexPath.row]
+        
+        guard let movieName = movie.original_title ?? movie.title else { return }
+        
+        APICaller.shared.getYoutubeMovie(with: movieName) { [weak self] result in
+            switch result {
+            case .success(let video):
+                DispatchQueue.main.async {
+                    let vc = MoviePreviewViewController()
+                    vc.configure(with: MoviePreviewViewModel(name: movieName, youtubeVideo: video, description: movie.overview ?? ""))
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+    }
 }
 
-extension SearchViewController: UISearchResultsUpdating {
+extension SearchViewController: UISearchResultsUpdating, SearchResultsViewControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         
@@ -98,6 +120,8 @@ extension SearchViewController: UISearchResultsUpdating {
               !query.trimmingCharacters(in: .whitespaces).isEmpty,
               query.trimmingCharacters(in: .whitespaces).count >= 3,
               let resultsController = searchController.searchResultsController as? SearchResultsViewController else { return }
+        
+        resultsController.delegate = self
         
         APICaller.shared.search(with: query) { result in
             DispatchQueue.main.async {
@@ -109,6 +133,14 @@ extension SearchViewController: UISearchResultsUpdating {
                     print(error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    func SearchResultsViewControllerDidTapItem(_ viewModel: MoviePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = MoviePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

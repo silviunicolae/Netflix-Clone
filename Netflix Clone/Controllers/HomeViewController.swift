@@ -17,6 +17,9 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {
     
+    private var randomTrendingMovie: Movie?
+    private var headerView: HeroHeaderUIView?
+    
     let sectionTitles: [String] = ["Popular", "Trending Movies", "Trending TV", "Upcoming Movies","Top rated"]
     
     private let homeFeedTable: UITableView = {
@@ -35,20 +38,29 @@ class HomeViewController: UIViewController {
         
         configureNavBar()
         
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+        configureHeroHeaderView()
         
-//        getPopularMovies()
-//        getTrendingMovies()
-//        getTrendingTv()
-//        getUpcomingMovies()
-//        getTopRatedMovies()
+    }
+    
+    private func configureHeroHeaderView() {
+        APICaller.shared.getTrendingMovies { [weak self] result in
+            switch result {
+            case .success(let movies):
+                let selectedMovie = movies.randomElement()
+                self?.randomTrendingMovie = selectedMovie
+                self?.headerView?.configure(with: MovieViewModel(titleName: selectedMovie?.original_title ?? selectedMovie?.title ?? "", posterURL: selectedMovie?.poster_path ?? ""))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func configureNavBar() {
         var image = UIImage(named: "NetflixLogo")
         image = image?.withRenderingMode(.alwaysOriginal)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
             UIBarButtonItem(image: UIImage(systemName: "play.tv"), style: .done, target: self, action: nil)
@@ -62,63 +74,6 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
     }
-    
-    
-//    private func getPopularMovies() {
-//        APICaller.shared.getPopularMovies { _ in
-////            switch results {
-////            case .success(let movies):
-////                print(movies)
-////            case .failure(let error):
-////                print(error)
-////            }
-//        }
-//    }
-//
-//    private func getTrendingMovies() {
-//        APICaller.shared.getTrendingMovies { results in
-//            switch results {
-//            case .success(let movies):
-//                print(movies)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-//
-//    private func getTrendingTv() {
-//        APICaller.shared.getTrendingTv { results in
-////            switch results {
-////            case .success(let movies):
-////                print(movies)
-////            case .failure(let error):
-////                print(error)
-////            }
-//        }
-//    }
-//
-//    private func getUpcomingMovies() {
-//        APICaller.shared.getUpcomingMovies { _ in
-////            switch results {
-////            case .success(let movies):
-////                print(movies)
-////            case .failure(let error):
-////                print(error)
-////            }
-//        }
-//    }
-//
-//    private func getTopRatedMovies() {
-//        APICaller.shared.getTopRatedMovies { _ in
-////            switch results {
-////            case .success(let movies):
-////                print(movies)
-////            case .failure(let error):
-////                print(error)
-////            }
-//        }
-//    }
-    
     
 }
 
@@ -136,6 +91,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionViewTableViewCell.identifier, for: indexPath) as? CollectionViewTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.delegate = self
         
         switch indexPath.section {
         case Sections.Popular.rawValue:
@@ -218,4 +175,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
 
+}
+
+
+extension HomeViewController: CollectionViewTableViewCellDelegate {
+    func CollectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: MoviePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = MoviePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }

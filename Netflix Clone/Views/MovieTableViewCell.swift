@@ -52,13 +52,13 @@ class MovieTableViewCell: UITableViewCell {
         ]
         
         let movieLabelConstrains = [
-            movieLabel.leadingAnchor.constraint(equalTo: moviePosterUIImageView.trailingAnchor, constant: 20),
-            movieLabel.widthAnchor.constraint(equalToConstant:  contentView.bounds.width - 110),
+            movieLabel.leadingAnchor.constraint(equalTo: moviePosterUIImageView.trailingAnchor, constant: 10),
+            movieLabel.widthAnchor.constraint(equalToConstant:  UIScreen.main.bounds.width - 160),
             movieLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         
         let playMovieButtonConstrains = [
-            playMovieButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            playMovieButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             playMovieButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         

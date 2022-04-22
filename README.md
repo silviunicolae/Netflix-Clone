@@ -6,3 +6,4 @@ Swift 5 and UIKit
 
 - The API Key should be introduced to `Constants.swift` file that is inside `Managers` folder
 - [TheMovieDB](https://www.themoviedb.org)
+- [YouTube Data API](https://console.cloud.google.com/)

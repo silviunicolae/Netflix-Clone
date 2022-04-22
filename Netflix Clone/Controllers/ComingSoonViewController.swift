@@ -72,4 +72,27 @@ extension ComingSoonViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let movie = movies[indexPath.row]
+        
+        guard let movieName = movie.original_title ?? movie.title else { return }
+        
+        APICaller.shared.getYoutubeMovie(with: movieName) { [weak self] result in
+            switch result {
+            case .success(let video):
+                DispatchQueue.main.async {
+                    let vc = MoviePreviewViewController()
+                    vc.configure(with: MoviePreviewViewModel(name: movieName, youtubeVideo: video, description: movie.overview ?? ""))
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
+    }
+
 }

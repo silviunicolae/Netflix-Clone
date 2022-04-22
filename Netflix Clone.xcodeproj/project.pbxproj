@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B12AF37328130A2800BA062B /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AF37228130A2800BA062B /* YoutubeSearchResponse.swift */; };
+		B12AF37528130DA400BA062B /* MoviePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AF37428130DA400BA062B /* MoviePreviewViewController.swift */; };
+		B12AF3782813112E00BA062B /* MoviePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12AF3772813112E00BA062B /* MoviePreviewViewModel.swift */; };
 		B14CB0542810580300CAAC51 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB0532810580300CAAC51 /* HomeViewController.swift */; };
 		B14CB0562810584500CAAC51 /* ComingSoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */; };
 		B14CB058281058A900CAAC51 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CB057281058A900CAAC51 /* SearchViewController.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B12AF37228130A2800BA062B /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
+		B12AF37428130DA400BA062B /* MoviePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePreviewViewController.swift; sourceTree = "<group>"; };
+		B12AF3772813112E00BA062B /* MoviePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePreviewViewModel.swift; sourceTree = "<group>"; };
 		B14CB0532810580300CAAC51 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewController.swift; sourceTree = "<group>"; };
 		B14CB057281058A900CAAC51 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B12AF37628130DB300BA062B /* General use */ = {
+			isa = PBXGroup;
+			children = (
+				B12AF37428130DA400BA062B /* MoviePreviewViewController.swift */,
+			);
+			path = "General use";
+			sourceTree = "<group>";
+		};
 		B14CB052281057CB00CAAC51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +90,7 @@
 				B1FD4C002811BBD0009DD128 /* Search */,
 				B14CB0552810584500CAAC51 /* ComingSoonViewController.swift */,
 				B14CB059281058D400CAAC51 /* DownloadsViewController.swift */,
+				B12AF37628130DB300BA062B /* General use */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -95,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B1FD4BFC2811B051009DD128 /* MovieViewModel.swift */,
+				B12AF3772813112E00BA062B /* MoviePreviewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -103,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				B15988E528119218001E5622 /* Movie.swift */,
+				B12AF37228130A2800BA062B /* YoutubeSearchResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,8 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15988E228118D8E001E5622 /* configuration.swift in Sources */,
+				B12AF3782813112E00BA062B /* MoviePreviewViewModel.swift in Sources */,
 				B14CB058281058A900CAAC51 /* SearchViewController.swift in Sources */,
 				B1DC46D128103ACC00EA3EC3 /* TabBarViewController.swift in Sources */,
+				B12AF37328130A2800BA062B /* YoutubeSearchResponse.swift in Sources */,
+				B12AF37528130DA400BA062B /* MoviePreviewViewController.swift in Sources */,
 				B14CB06028105EC100CAAC51 /* CollectionViewTableViewCell.swift in Sources */,
 				B15988E028118D4A001E5622 /* APICaller.swift in Sources */,
 				B14CB0622810668900CAAC51 /* HeroHeaderUIView.swift in Sources */,
