@@ -29,7 +29,7 @@ class MoviePreviewViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.text = "test descriere alalsandjas uasndadnajdna jad ajd ajd ajd ja a dajka"
-        label.numberOfLines = 0
+        label.numberOfLines = 10
         return label
     }()
     
